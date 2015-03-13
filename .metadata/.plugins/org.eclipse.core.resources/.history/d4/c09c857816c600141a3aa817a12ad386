@@ -1,0 +1,22 @@
+import java.io.IOException;
+
+
+public class teste {
+
+	public static void main(String[] args) {
+		String message = ;
+		if (message .contentEquals("youtube")) {
+    		System.out.println(message);
+    	} else {
+    	    if (message.startsWith("http")){
+				try {
+					sendMessage(channel, TitleExtractor.getPageTitle(message));
+					System.out.println(TitleExtractor.getPageTitle(message));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		    }
+    	}
+	}
+
+}

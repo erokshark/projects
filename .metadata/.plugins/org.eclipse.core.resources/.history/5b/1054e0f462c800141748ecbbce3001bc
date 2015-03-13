@@ -1,0 +1,47 @@
+package teste;
+
+import java.awt.AWTException;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.io.IOException;
+ 
+public class aimBot {
+ 
+        public static void main(String[] args) throws AWTException, IOException {
+ 
+        Robot bot = new Robot();
+        Toolkit tk = Toolkit.getDefaultToolkit();  
+        Dimension d = tk.getScreenSize();  
+        int r = 0, g = 0, b = 0;
+        long tStart = System.currentTimeMillis();
+           
+            //parte que deve executar ao pressionar a tecla e parar quando pressionada novamente
+ 
+            for (int a=0; a<1000; a++){             
+                for (int i=0; i<1000; i++){
+                         Color color = bot.getPixelColor(a, i);
+                         r = color.getRed();
+                         g = color.getGreen();
+                         b = color.getBlue();
+                         
+                         if ((r == 255) && (g == 0) && (b == 255)){
+                                 System.out.println("Red   = " + color.getRed());
+                             System.out.println("Green = " + color.getGreen());
+                             System.out.println("Blue  = " + color.getBlue());
+                             System.out.println("------------------------------");
+                             bot.mouseMove(a, i);
+                             long tEnd = System.currentTimeMillis(); 
+                             long tResult = tEnd - tStart; 
+                             System.out.println("Tempo de Execução = "+tResult+" ms"); 
+                             break;
+                         }
+                       
+                }
+            }
+ 
+            /////////////////////////////////////      
+           
+            }
+        }

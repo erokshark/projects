@@ -1,0 +1,30 @@
+package teste;
+
+import java.awt.Robot;
+import java.awt.event.InputEvent;
+import java.util.Random;
+
+
+public class mouse {
+	
+	public static void main(String... args) throws Exception {
+        Robot robot = new Robot();
+        Random random = new Random();
+        
+        for(int i=0; i<3; i++) {
+        	
+        	robot.mouseMove(random.nextInt(500), random.nextInt(500));
+        	 robot.mousePress(InputEvent.BUTTON3_MASK);
+             robot.mouseRelease(InputEvent.BUTTON3_MASK);
+        	robot.delay(3000);
+        }
+        
+        
+        
+        
+        
+	
+	
+	}
+
+}

@@ -1,0 +1,54 @@
+import java.util.Random;
+
+import org.jibble.pircbot.*;
+
+public class MyBot extends PircBot {
+    
+    public MyBot() {
+        this.setName("orcBOT");
+        this.setLogin("orcBOT");
+        
+    }
+    
+    public void onMessage(String channel, String sender, String login, String hostname, String message) {
+    	if (message.contains("popoti")) {
+    		sendMessage(channel, sender + " amostra o popoti ");
+    	}
+    	if (message.contains(".ver")){
+    		sendMessage(channel, this.getVersion());
+    	}
+    	if (message.contains(this.getNick()) || message.endsWith("?")){
+    		Random rand = new Random();
+    		String msg = "";
+    		int i = 0;
+    		i = rand.nextInt(5);
+    		switch (i) {
+    			case 0 : msg = "Não sei";
+    			System.out.println("i = " + i + " msg =" + msg);
+    					break;
+    			case 1 : msg = "Sim";
+    			System.out.println("i = " + i + " msg =" + msg);
+    					break;
+    			case 2 : msg = "Talvez";
+        		System.out.println("i = " + i + " msg =" + msg);
+						break;    			
+    			case 3 : msg = "Não";
+    			System.out.println("i = " + i + " msg =" + msg);
+						break;
+    			case 4 : msg = "Nunca";
+    			System.out.println("i = " + i + " msg =" + msg);
+						break;
+    			case 5 : msg = "Com certeza";
+    			System.out.println("i = " + i + " msg =" + msg);
+						break;
+    			
+    		}
+    		sendMessage(channel, msg);
+       	}
+    	if (message.equalsIgnoreCase(".quit")){
+    		if (sender.equals("orc")){
+        		this.quitServer("Requestado");
+    		}
+    	}
+    }
+}

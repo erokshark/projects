@@ -1,0 +1,14 @@
+package teste;
+
+import java.awt.Robot;
+
+public class mouse {
+	
+	public static void main() throws Exception {
+        Robot robot = new Robot();
+        System.out.println(robot.getPixelColor(1, 1));
+	
+	
+	}
+
+}

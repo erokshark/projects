@@ -1,0 +1,12 @@
+package teste;
+
+import java.awt.Robot;
+
+public class tesdsafd {
+
+	public static void main(String[] args) {
+		Robot rob = null;
+		rob.mouseMove(500,0);
+	}
+
+}

@@ -1,0 +1,78 @@
+import java.io.IOException;
+import java.util.Random;
+
+import org.jibble.pircbot.*;
+
+public class MyBot extends PircBot {
+    
+    public MyBot() {
+        this.setName("orcBOT");
+        this.setLogin("orcBOT");
+        
+    }
+    
+    public void onMessage(String channel, String sender, String login, String hostname, String message) {
+    	if (message.contains("popoti")) {
+    		sendMessage(channel, sender + " amostra o popoti ");
+    	}
+    	if (message.contains("marufas")) {
+    		sendMessage(channel, sender + " MARUFAS ");
+    	}
+    	if (message.contains(".ver")){
+    		sendMessage(channel, this.getVersion());
+    	}
+    	if (message.contains(this.getNick()) && message.endsWith("?")){
+    		Random rand = new Random();
+    		String msg = "";
+    		int i = 0;
+    		i = rand.nextInt(5);
+    		switch (i) {
+    			case 0 : msg = "Não sei";
+    					break;
+    			case 1 : msg = "Sim";
+    					break;
+    			case 2 : msg = "Talvez";
+						break;    			
+    			case 3 : msg = "Não";
+						break;
+    			case 4 : msg = "Nunca";
+						break;
+    			case 5 : msg = "Com certeza";
+						break;
+    			
+    		}
+    		sendMessage(channel, msg);
+       	}
+    	
+	    if (message.startsWith("http")){
+	    	String tmp = "";
+			try {
+				tmp = TitleExtractor.getPageTitle(message);
+				tmp.replaceAll("''", "");
+				//sendMessage(channel, tmp);
+				System.out.println(tmp);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	    }
+    	//permissao
+    	if (message.equalsIgnoreCase(".quit") && (sender.equals("orc"))){
+    		this.quitServer();
+       	}
+    	if (message.contains(".join #") && (sender.equals("orc"))){
+    		String chan = "";
+    		String tmp = message;
+    		for (int i = 0; i<message.length(); i++){
+    			if (tmp.substring(i,i+1).equals("#")){
+    				chan = 	(tmp.substring(i,message.length()));
+    			}
+    		}
+    		this.joinChannel(chan);    		
+    	}
+    	if (message.contains(".part") && (sender.equals("orc"))){
+    		this.partChannel(channel, "Requestado");    
+    	}		
+    	
+   }
+
+}
